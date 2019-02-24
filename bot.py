@@ -16,6 +16,10 @@ async def on_message(message):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
 
+    if message.content.startswith('!ping'):
+        await client.send_message(message.channel, "Pong")
+
+    
     if message.content.startswith('!horoscope'):
         await client.send_message(message.channel, "getting Horoscope")
         msg1 = message.content[11:100]
