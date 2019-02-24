@@ -20,11 +20,14 @@ async def on_message(message):
         await client.send_message(message.channel, "getting Horoscope")
         msg1 = message.content[11:100]
         print(msg1)
-        horoscope = Horoscope(msg1)
+        horoscope = Horoscope(msg1.lower())
         today = horoscope.today()
-        await client.send_message(message.channel, today['sunsign'])
-        await client.send_message(message.channel, today['horoscope'])
-        
+        await client.send_message(message.channel, 'Hello {0.author.mention} Taino says that your Horoscope will be:'.format(message))
+        msg2 = today['horoscope']
+        await client.send_message(message.channel, msg2[:msg2.rfind('(')])
+
+    if message.content.startswith('!exit'):
+        exit()
         
 
 @client.event
